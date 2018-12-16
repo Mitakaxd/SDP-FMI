@@ -119,7 +119,8 @@ list<int> SimpleQueryList(vector<WordStruct>& all_words, string searching)
         }
         mid=(endIt-start)/2+start;
     }
-    return (*mid).IdxofDocuments;
+    list<int>empty;
+    return empty;
 }
 
 
