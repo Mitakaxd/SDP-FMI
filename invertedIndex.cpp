@@ -42,7 +42,7 @@ void ChangeToLowerCase(fstream& file)
 
         for(int i=0; i<word.length(); i++)
         {
-            if(word[i]<='Z' && word[i]>='A')word[i]+'a'-'A';
+            if(word[i]<='Z' && word[i]>='A')word[i]+='a'-'A';
         }
 
 
