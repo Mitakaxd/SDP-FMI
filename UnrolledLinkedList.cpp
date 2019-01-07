@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-#define maxElements 10
+const int  maxElements=10;
 template <typename T>
 struct Node
 {
@@ -32,13 +32,12 @@ private:
     void del()
     {
         Node<T>* temp;
-        while (first->next != nullptr)
+        while (first!= nullptr)
         {
             temp = first;
             first = first->next;
             delete temp;
         }
-        delete first;
     };
 
     class Iterator
@@ -105,7 +104,7 @@ public:
         return Iterator(first,0);
     }
     Iterator end()
-    {
+    { if(first==nullptr) throw "List Empty";
         Node<T>* temp=first;
         while(temp->next!=nullptr)temp=temp->next;
         return Iterator(temp,temp->size-1);
@@ -154,6 +153,7 @@ public:
     void FindAndDel(T const& elem)
     {
         Node<T>* temp = first;
+        if (temp==nullptr) return;
         while (temp->next != nullptr)
         {
             //deleting the found elements from this node
@@ -161,7 +161,7 @@ public:
             {
                 if (temp->arr[i] == elem)
                 {
-                    for (int j = i; j < temp->size; j++)
+                    for (int j = i; j < temp->size-1; j++)
                     {
                         temp->arr[j] = temp->arr[j + 1];
                     }
@@ -231,10 +231,12 @@ public:
             }
             temp->size = maxElements / 2;
             temp->next = new Node<T>(arr, newNodeSize, temp->next);
-        }
+        
         if (idx2 < maxElements / 2) temp->arr[idx2] = elem;//saving elem if j<n
         else temp->next->arr[idx2 - maxElements / 2] = elem;//saving elem if j>n
-
+        }
+        
+        else temp->arr[idx2]=elem;
     }
 
 
@@ -257,7 +259,7 @@ public:
             }
             temp->size = maxElements / 2;
             temp->next = new Node<T>(arr, newNodeSize, temp->next);
-
+            temp=temp->next;
         }
         temp->arr[temp->size++] = elem;//saving new element
 
