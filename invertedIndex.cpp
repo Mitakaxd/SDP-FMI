@@ -330,7 +330,7 @@ int main()
     }
     string input;
     while( getline(cin,input))
-    {
+    { //modify querys to be lowerCase
         list<int> output=evaluate(input,all_words);
         for(auto it=output.begin(); it!=output.end(); it++)
         {
