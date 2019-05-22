@@ -30,29 +30,13 @@ vector<string> ParseFolder(string dirName)
 
 
 }
-void ChangeToLowerCase(fstream& file)
-{
-    string word;
-    file.seekp(0);
-    file.seekg(0);
-    int prevPos=file.tellp();
-    while(!file.eof())
-    {
-        file>>word;
+void ChangeToLowerCase(string& word){
 
         for(int i=0; i<word.length(); i++)
         {
             if(word[i]<='Z' && word[i]>='A')word[i]+='a'-'A';
         }
 
-
-        file.seekp(prevPos);
-
-
-        file<<word+" ";
-        prevPos=file.tellg();
-    }
-    file.close();
 
 }
 struct WordStruct
@@ -303,17 +287,13 @@ int main()
     for(int i=0; i<FileNames.size(); i++) // going through the documents
     {
         curFile.open(DirPath +"\\"+FileNames[i]);
-
-        ChangeToLowerCase(curFile);
-
-        curFile.open(DirPath +"\\"+FileNames[i]);
         curFile.seekg(0);
         curFile.seekp(0);
 
         while(!curFile.eof())
         {
             curFile>>curWord;
-
+            ChangeToLowerCase(curWord);
             if(all_words.empty())
             {
                 WordStruct newOne;
