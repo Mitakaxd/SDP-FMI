@@ -1,7 +1,7 @@
 # SDP-FMI
 Projects for Data Structures and Algorithms course at FMI
 
-#Inverted Index
+# Inverted Index
 Definition
 
 An index data structure that maps content to 1 or more documents. The purpose is to optimize time needed for search queries at the cost of more time needed to process the documents.
